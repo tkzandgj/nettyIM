@@ -1,0 +1,28 @@
+option java_package = "com.cncnc.protobuf.protocol";
+option java_outer_classname = "Internal";
+
+enum Dest {
+    Client = 1;
+    AuthServer = 2;
+    LogicServer = 3;
+    GateServer = 4;
+}
+
+//服务间的中转协议
+message GTransfer {
+    required Dest   dest  = 1;
+    optional uint64 netId = 2;
+    required string userId = 3;
+    required uint32 ptoNum = 4;
+	required bytes  msg = 5;
+}
+
+//服务间建立连接时发送的协议
+message Greet {
+    enum From {
+        LogicServer = 1;
+        GateServer  = 2;
+        AuthServer  = 3;
+    }
+    required From from = 1;
+}
