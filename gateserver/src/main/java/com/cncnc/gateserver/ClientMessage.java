@@ -2,6 +2,7 @@ package com.cncnc.gateserver;
 
 import com.cncnc.analysis.ParseMap;
 import com.cncnc.gateserver.handler.GateToAuthConnectionHandler;
+import com.cncnc.gateserver.handler.GateToLogicConnectionHandler;
 import com.cncnc.gateserver.utils.ClientConnection;
 import com.cncnc.gateserver.utils.ClientConnectionMap;
 import com.cncnc.protobuf.chat.Chat;
@@ -71,6 +72,7 @@ public class ClientMessage {
             byteBuf = Utils.pack2Server(message, ParseMap.getPtoNum(message), conn.getNetId(), Internal.Dest.LogicServer, conn.getUserId());
         }
 
+        GateToLogicConnectionHandler.getGateToLogicConnection().writeAndFlush(byteBuf);
     }
 
 

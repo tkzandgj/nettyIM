@@ -22,8 +22,9 @@ public class GateServerStarter {
 
         new Thread(() -> GateServer.startGateServer(GATE_PORT)).start();
 
-        new Thread(() -> GateToAuthConnection.startGateToAuthConnection(GATE_TO_AUTH_HOST, GATE_TO_AUTH_PORT)).start();
+        //new Thread(() -> GateToAuthConnection.startGateToAuthConnection(GATE_TO_AUTH_HOST, GATE_TO_AUTH_PORT)).start();
 
+        // 先去测试能不能连接到业务逻辑层
         new Thread(() -> GateToLogicConnection.startGateToLogicConnection(GATE_TO_LOGIC_HOST, GATE_TO_LOGIC_PORT)).start();
 
     }

@@ -11,6 +11,9 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * gate作为客户端，去连接logic服务端
+ */
 public class GateToLogicConnection {
 
     private static final Logger logger = LoggerFactory.getLogger(GateToLogicConnection.class);
